@@ -1,0 +1,27 @@
+{
+  "name": "svg-mapper",
+  "version": "1.0.0",
+  "description": "aggregate svg files into a map file as symbols",
+  "main": "svg-mapper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mynameislau/svg-mapper.git"
+  },
+  "keywords": [
+    "svg",
+    "use",
+    "symbol"
+  ],
+  "author": "mynameislau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mynameislau/svg-mapper/issues"
+  },
+  "homepage": "https://github.com/mynameislau/svg-mapper#readme",
+  "devDependencies": {
+    "glob": "^6.0.3"
+  }
+}
