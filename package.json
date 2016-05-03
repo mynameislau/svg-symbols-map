@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mynameislau/svg-symbols-map#readme",
   "devDependencies": {
-    "glob": "^6.0.3"
+    "glob": "^6.0.3",
+    "mkdirp": "^0.5.1"
   }
 }

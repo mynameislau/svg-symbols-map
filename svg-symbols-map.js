@@ -1,13 +1,15 @@
 var glob = require('glob');
 var fs = require('fs');
+var mkdirp = require('mkdirp');
+var path = require('path');
 
 exports.map = function (src, dest)
 {
-  var promise = new Promise(function (resolve, reject) {
+  var promise = new Promise((resolve, reject) => {
     src = src || 'svg/**/*.svg';
     dest = dest || './map.svg';
 
-    glob(src, function (error, fileNames) {
+    glob(src, (error, fileNames) => {
       var holderTemplate = fs.readFileSync(require.resolve('./holder-template.svg')).toString();
       var symbolTemplate = fs.readFileSync(require.resolve('./symbol-template.svg')).toString();
 
@@ -15,7 +17,7 @@ exports.map = function (src, dest)
 
       var symbols = [];
       var foundFilesNumber = 0;
-      fileNames.forEach(function (fileName) {
+      fileNames.forEach(fileName => {
         foundFilesNumber += 1;
         var file = fs.readFileSync(fileName).toString();
         var result = svgParser.exec(file);
@@ -26,7 +28,7 @@ exports.map = function (src, dest)
 
         //replacing id attribute
         attributes = attributes.replace(/id=".*?"/, '');
-        attributes = 'id="' + fileNameNoExtension + '" ' + attributes;
+        attributes = `id="${fileNameNoExtension}"${attributes}`;
 
         //adding attributes and content to svg
         var symbol = symbolTemplate.replace(/\n?\{\{attributes\}\}\n?/, attributes);
@@ -40,7 +42,7 @@ exports.map = function (src, dest)
 
       if (foundFilesNumber > 0)
       {
-        console.log('svg-mapper : processed ' + foundFilesNumber + ' files');
+        console.log(`svg-mapper : processed ${foundFilesNumber} files`);
       }
       else {
         console.log('svg-mapper : error, no files found');
@@ -49,10 +51,15 @@ exports.map = function (src, dest)
       var output = holderTemplate.replace(/\{\{symbols\}\}/, symbols.join('\n'));
 
       //console.log(output);
-      fs.writeFile(dest, output, function (error) {
+      mkdirp(path(dest), function (error) {
         if (error) { reject(error); }
-        resolve();
-      });
+        else {
+          fs.writeFile(dest, output, error => {
+            if (error) { reject(error); }
+            resolve();
+          });
+        }
+      }
     });
   });
 
