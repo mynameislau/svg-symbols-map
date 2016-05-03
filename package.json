@@ -1,10 +1,10 @@
 {
   "name": "svg-symbols-map",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "aggregate svg files into a map file as symbols",
   "main": "svg-symbols-map.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./test.js"
   },
   "repository": {
     "type": "git",

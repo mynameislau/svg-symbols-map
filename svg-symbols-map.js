@@ -9,6 +9,8 @@ exports.map = function (src, dest)
     src = src || 'svg/**/*.svg';
     dest = dest || './map.svg';
 
+    //console.log(`ok src is ${src}, dest is ${dest}`);
+
     glob(src, (error, fileNames) => {
       var holderTemplate = fs.readFileSync(require.resolve('./holder-template.svg')).toString();
       var symbolTemplate = fs.readFileSync(require.resolve('./symbol-template.svg')).toString();
@@ -51,7 +53,7 @@ exports.map = function (src, dest)
       var output = holderTemplate.replace(/\{\{symbols\}\}/, symbols.join('\n'));
 
       //console.log(output);
-      mkdirp(path(dest), function (error) {
+      mkdirp(path.dirname(dest), function (error) {
         if (error) { reject(error); }
         else {
           fs.writeFile(dest, output, error => {
