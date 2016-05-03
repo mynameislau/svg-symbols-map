@@ -59,7 +59,7 @@ exports.map = function (src, dest)
             resolve();
           });
         }
-      }
+      });
     });
   });
 

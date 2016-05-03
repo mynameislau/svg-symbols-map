@@ -1,6 +1,6 @@
 {
   "name": "svg-symbols-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "aggregate svg files into a map file as symbols",
   "main": "svg-symbols-map.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/mynameislau/svg-symbols-map#readme",
   "devDependencies": {
-    "glob": "^6.0.3",
+    "glob": "^6.0.4",
     "mkdirp": "^0.5.1"
   }
 }
