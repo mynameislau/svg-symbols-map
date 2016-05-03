@@ -1,6 +1,6 @@
 {
   "name": "svg-symbols-map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "aggregate svg files into a map file as symbols",
   "main": "svg-symbols-map.js",
   "scripts": {
